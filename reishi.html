@@ -157,8 +157,8 @@
     </div>
 
     <div class="hero">
-      <img id="heroImg" src="https://aka.doubaocdn.com/s/HhDjRJquYB" alt="Gírgolas Azules">
-      <div class="dots"><i class="on"></i><i></i><i></i><i></i></div>
+      <img id="heroImg" src="https://aka.doubaocdn.com/s/PjgZVbdX66" alt="Gírgolas Azules">
+      <div class="dots"><i class="on"></i><i></i><i></i><i></i><i></i></div>
     </div>
 
     <div class="head">
@@ -202,6 +202,13 @@
         <span class="chip" data-l="n3">長壽傳統</span>
       </div>
     </div>
+    <div class="sec">
+      <h2><span class="ic" style="background:linear-gradient(145deg,#8A6A52,#6B5138);"><svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v12H4zM4 20h16"/><path d="M8 9l3 3 3-3 2.5 2.5"/></svg></span><span data-l="r1"></span></h2>
+      <div class="rnote" data-l="r2"></div>
+      <div class="rdish"><div class="rd"><img src="https://aka.doubaocdn.com/s/hwLejHlFVq" alt="" loading="lazy" onclick="openLb(this)"><span data-l="r3"></span></div><div class="rd"><img src="https://aka.doubaocdn.com/s/TpFwuEdiBS" alt="" loading="lazy" onclick="openLb(this)"><span data-l="r4"></span></div><div class="rd"><img src="https://aka.doubaocdn.com/s/9sCGt5VIpN" alt="" loading="lazy" onclick="openLb(this)"><span data-l="r5"></span></div></div>
+      <div class="rnote" data-l="r6" style="margin-top:6px;"></div><div class="rnote" data-l="r7" style="margin-top:6px;"></div><div class="rnote" data-l="r8" style="margin-top:6px;"></div>
+      
+    </div>
     </div>
 
   <footer>
@@ -244,6 +251,14 @@ var T = {
   n1:{'zh-Hant':'多醣體','zh-Hans':'多糖体','es':'Polisacáridos'},
   n2:{'zh-Hant':'三萜類','zh-Hans':'三萜类','es':'Triterpenos'},
   n3:{'zh-Hant':'長壽傳統','zh-Hans':'长寿传统','es':'Longevidad'},
+  r1:{'zh-Hant':'食譜與做法','zh-Hans':'食谱与做法','es':'Recetas y preparación'},
+  r2:{'zh-Hant':'靈芝常用煮茶或加入咖啡。點擊圖片可放大，附簡單作法。','zh-Hans':'灵芝常用煮茶或加入咖啡。点击图片可放大，附简单作法。','es':'El reishi se usa comúnmente en infusiones o en el café. Tocá la imagen para verla en grande.'},
+  r3:{'zh-Hant':'靈芝茶','zh-Hans':'灵芝茶','es':'Té de reishi'},
+  r4:{'zh-Hant':'靈芝咖啡（泡沫）','zh-Hans':'灵芝咖啡（泡沫）','es':'Café con espuma de reishi'},
+  r5:{'zh-Hant':'靈芝咖啡（熱飲）','zh-Hans':'灵芝咖啡（热饮）','es':'Café caliente con reishi'},
+  r6:{'zh-Hant':'作法：靈芝切片，加水煮沸後轉小火煮20~30分鐘，倒出茶湯可回煮2~3次。可加少許蜂蜜或紅棗調味。','zh-Hans':'作法：灵芝切片，加水煮沸后转小火煮20~30分钟，倒出茶汤可回煮2~3次。可加少许蜂蜜或红枣调味。','es':'Preparación: Cortá el reishi en láminas, hervilo 20-30 min a fuego lento; podés repetir la extracción 2-3 veces. Endulzá con miel o dátiles.'},
+  r7:{'zh-Hant':'作法：將1小匙靈芝粉（或磨碎的靈芝）加入熱黑咖啡中拌勻，也可與可可粉混合增加風味。','zh-Hans':'作法：将1小匙灵芝粉（或磨碎的灵芝）加入热黑咖啡中拌匀，也可与可可粉混合增加风味。','es':'Preparación: Mezclá 1 cucharadita de polvo de reishi en café negro caliente; también se puede combinar con cacao.'},
+  r8:{'zh-Hant':'作法：濃縮咖啡或黑咖啡沖好後，加入靈芝粉攪拌，搭配豆香更順口。建議一天1~2杯為宜。','zh-Hans':'作法：浓缩咖啡或黑咖啡冲好后，加入灵芝粉搅拌，搭配豆香更顺口。建议一天1~2杯为宜。','es':'Preparación: Prepará un café negro o expreso, agregá el polvo de reishi y revolvé. Se recomiendan 1-2 tazas al día.'},
 };
 var RECIPES = [];
 // 状态
@@ -294,7 +309,7 @@ function toggleTheme(){
   if(tp){ tp.setAttribute('d', THEME==='day' ? 'M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z' : 'M21 12.8A8.5 8.5 0 1 1 11.2 3 6.6 6.6 0 0 0 21 12.8z'); }
 }
 // hero 轮播
-var IMGS=["https://aka.doubaocdn.com/s/HhDjRJquYB", "https://aka.doubaocdn.com/s/MLbTdd3xn1", "https://aka.doubaocdn.com/s/knAMxUQayL", "https://aka.doubaocdn.com/s/e1uKaNMJvf"];
+var IMGS=["https://aka.doubaocdn.com/s/PjgZVbdX66", "https://aka.doubaocdn.com/s/YowFumLQZU", "https://aka.doubaocdn.com/s/7X4mm9E3LK", "https://aka.doubaocdn.com/s/EjmzQQql6S", "https://aka.doubaocdn.com/s/TSjRNuDv2U"];
 var idx=0;
 setInterval(function(){
   idx=(idx+1)%IMGS.length;
