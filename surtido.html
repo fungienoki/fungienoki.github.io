@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <link rel="icon" type="image/png" href="https://aka.doubaocdn.com/s/BOaOq0jgnV">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fungi Enoki · Surtido de Hongos 雜菇隨機包</title>
+<style>
+  :root{
+    --bg1:#F7F3EA; --bg2:#EFE9DA; --bg3:#E6DFCC;
+    --ink:#5A4636; --ink2:#9C7E6E; --accent:#C96A3C;
+    --card:rgba(255,255,255,0.82); --cardline:rgba(255,255,255,0.95);
+    --shadow:0 6px 20px rgba(90,70,54,0.10);
+    --dark1:#5A4636; --dark2:#3E3128;
+  }
+  [data-theme="night"]{
+    --bg1:#201A13; --bg2:#2A2119; --bg3:#35291E;
+    --ink:#F0E6D6; --ink2:#B49B86; --accent:#E89262;
+    --card:rgba(255,255,255,0.08); --cardline:rgba(255,255,255,0.14);
+    --shadow:0 6px 20px rgba(0,0,0,0.35);
+    --dark1:#14100B; --dark2:#1D1610;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:-apple-system,'PingFang TC','PingFang SC','Microsoft YaHei','Noto Sans TC',sans-serif;
+    background:linear-gradient(170deg,var(--bg1) 0%,var(--bg2) 55%,var(--bg3) 100%);
+    color:var(--ink);min-height:100vh;transition:background .35s,color .35s;
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:16px 18px 0 18px;}
+  .hidden{display:none!important;}
+  .toolbar{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:16px;}
+  .logo-row{display:flex;align-items:center;gap:13px;margin-bottom:14px;}
+  .logo-row img{width:52px;height:52px;border-radius:50%;object-fit:cover;box-shadow:0 3px 12px rgba(90,70,54,.22);}
+  .logo-row .lb{font-size:1.312rem;font-weight:700;letter-spacing:2.5px;color:var(--ink);font-family:Georgia,'Times New Roman',serif;}
+  .logo-row .lb .f{font-weight:700;}
+  .logo-row .lb .e{font-weight:700;}
+  .back-btn{display:flex;align-items:center;gap:6px;background:var(--card);border:1px solid var(--cardline);border-radius:14px;padding:9px 15px;box-shadow:var(--shadow);text-decoration:none;color:var(--ink);font-size:0.812rem;font-weight:600;backdrop-filter:none;}
+  .back-btn svg{flex:none;}
+  .tool-icons{display:flex;gap:8px;align-items:center;}
+  .lang-pill{display:flex;gap:3px;background:var(--card);border:1px solid var(--cardline);border-radius:14px;padding:4px;box-shadow:var(--shadow);backdrop-filter:none;}
+  .lang-pill button{border:none;background:transparent;color:var(--ink2);font-size:0.781rem;font-weight:600;padding:7px 13px;border-radius:10px;cursor:pointer;font-family:inherit;transition:background .2s,color .2s;}
+  .lang-pill button.on{background:linear-gradient(135deg,#C96A3C,#B85A2E);color:#fff;box-shadow:0 2px 8px rgba(201,106,60,.35);}
+  .icon-btn{width:38px;height:38px;border-radius:13px;background:var(--card);border:1px solid var(--cardline);box-shadow:var(--shadow);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--ink);transition:transform .15s;}
+  .icon-btn:active{transform:scale(.92);}
+  .size-pill{display:flex;gap:3px;background:var(--card);border:1px solid var(--cardline);border-radius:14px;padding:4px;box-shadow:var(--shadow);backdrop-filter:none;}
+  .size-pill button{border:none;background:transparent;color:var(--ink);padding:6px 12px;border-radius:10px;cursor:pointer;font-family:Georgia,serif;font-size:0.938rem;font-weight:700;letter-spacing:.5px;}
+  .size-pill button:active{background:rgba(201,106,60,.14);}
+  /* hero 轮播 */
+  .hero{position:relative;border-radius:26px;overflow:hidden;box-shadow:var(--shadow);aspect-ratio:1/1;max-height:640px;margin-bottom:16px;}
+  .hero img{width:100%;height:100%;object-fit:cover;display:block;}
+  .hero .dots{position:absolute;left:0;right:0;bottom:12px;display:flex;justify-content:center;gap:7px;}
+  .hero .dots i{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.55);display:block;transition:background .3s;}
+  .hero .dots i.on{background:#C96A3C;}
+  /* 标题区 */
+  .head{padding:4px 4px 14px 4px;}
+  .head .zh{font-size:1.875rem;font-weight:800;}
+  .head .es{font-size:1.188rem;font-style:italic;color:var(--ink2);margin-top:4px;}
+  .head .meta{margin-top:8px;font-size:0.781rem;color:var(--ink2);}
+  /* 区块卡片 */
+  .sec{background:var(--card);border:1px solid var(--cardline);border-radius:26px;padding:20px 20px;box-shadow:var(--shadow);margin-bottom:14px;}
+  .sec h2{font-size:1.062rem;font-weight:800;margin-bottom:10px;display:flex;align-items:center;gap:9px;}
+  .sec h2 .ic{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none;position:relative;
+    background:linear-gradient(145deg,#5E8466,#3E5B47);
+    border:1px solid rgba(255,255,255,0.55);
+    box-shadow:0 6px 16px rgba(90,70,54,0.22), inset 0 2px 4px rgba(255,255,255,0.35), inset 0 -2px 6px rgba(0,0,0,0.22);
+  }
+  [data-theme="night"] .sec h2 .ic{border:1px solid rgba(255,255,255,0.30);box-shadow:0 6px 16px rgba(0,0,0,0.40), inset 0 2px 4px rgba(255,255,255,0.12), inset 0 -2px 6px rgba(0,0,0,0.35);}
+  .sec h2 .ic svg{width:21px;height:21px;}
+  .sec p{font-size:0.906rem;line-height:1.75;color:var(--ink);}
+  .sec p.lead{color:var(--ink);}
+  .sec .sub{color:var(--ink2);font-size:0.844rem;line-height:1.7;margin-top:8px;}
+  /* 深色营养卡 */
+  .nutri{background:linear-gradient(120deg,var(--dark1),var(--dark2));color:#F0E6D6;border-radius:26px;padding:22px 22px;margin-bottom:14px;box-shadow:var(--shadow);}
+  .nutri .keyline{display:inline-block;font-size:0.719rem;font-weight:800;letter-spacing:2px;color:#F6C453;border:1px solid rgba(246,196,83,0.55);border-radius:999px;padding:4px 12px;}
+  .nutri .big{font-size:1.625rem;font-weight:800;color:#F6C453;margin-top:12px;line-height:1.35;}
+  .nutri .desc{margin-top:10px;font-size:0.844rem;line-height:1.7;color:#D9CBB4;}
+  .nutri .row{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap;}
+  .nutri .chip{background:rgba(255,255,255,0.10);border-radius:14px;padding:10px 14px;font-size:0.781rem;font-weight:700;color:#F0E6D6;}
+  /* 烹饪方式小标签 */
+  .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;}
+  .chips span{background:rgba(201,106,60,0.12);border:1px solid rgba(201,106,60,0.3);color:var(--accent);border-radius:999px;padding:6px 13px;font-size:0.781rem;font-weight:700;}
+  /* YouTube 食谱 */
+  .yt-card{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--cardline);border-radius:18px;padding:10px 12px;box-shadow:var(--shadow);margin-top:10px;cursor:pointer;}
+  .yt-card .thumb{position:relative;width:96px;height:54px;border-radius:12px;overflow:hidden;flex:none;background:#1B1B1B;}
+  .yt-card .thumb img{width:100%;height:100%;object-fit:cover;display:block;}
+  .yt-card .thumb span{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:24px;height:24px;border-radius:50%;background:rgba(201,106,60,0.95);display:flex;align-items:center;justify-content:center;}
+  .yt-card .t1{font-size:0.781rem;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .yt-card .t2{font-size:0.688rem;font-style:italic;color:var(--ink2);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .yt-card .go{font-size:0.656rem;font-weight:700;color:var(--accent);flex:none;}
+  #ytPlayer{display:none;margin-top:12px;border-radius:16px;overflow:hidden;background:#000;box-shadow:var(--shadow);}
+  #ytPlayer iframe{width:100%;aspect-ratio:16/9;border:0;display:block;}
+  /* 维护卡片 */
+  .maint-card{max-width:460px;margin:60px auto;text-align:center;background:var(--card);border:1px solid var(--cardline);border-radius:26px;padding:40px 28px;box-shadow:var(--shadow);}
+  .maint-card .m1{font-size:1.375rem;font-weight:800;}
+  .maint-card .m2{margin-top:12px;font-size:0.875rem;color:var(--ink2);line-height:1.7;}
+  /* footer */
+  footer{margin-top:16px;background:linear-gradient(120deg,#5A4636,#3E3128);color:#E8DCC8;padding:28px 20px 38px 20px;text-align:center;}
+  [data-theme="night"] footer{background:linear-gradient(120deg,#14100B,#1D1610);}
+  footer .fbrand{font-size:1.125rem;font-weight:800;letter-spacing:2px;}
+  footer .fmail{margin-top:10px;font-size:0.812rem;color:#CBB79F;}
+  footer .fmail a{color:#E8DCC8;text-decoration:none;border-bottom:1px dotted #CBB79F;}
+  @media (max-width:520px){
+    .head .zh{font-size:1.562rem;}
+    .head .es{font-size:1.000rem;}
+    .sec{padding:16px 15px;}
+    .nutri .big{font-size:1.375rem;}
+  }
+
+  .rdish{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px;}
+  .rdish .rd{border-radius:16px;overflow:hidden;box-shadow:var(--shadow);cursor:zoom-in;background:var(--card);}
+  .rdish .rd img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;}
+
+  .rvideo{margin-top:12px;border-radius:16px;overflow:hidden;box-shadow:var(--shadow);}
+  .rvideo video{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;background:#1c201a;}
+  .rdish .rd span{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(transparent,rgba(30,26,18,0.78));color:#F7EFDF;font-size:0.688rem;font-weight:700;padding:22px 8px 6px 8px;text-align:center;}
+  .rdish .rd{position:relative;}
+  .rnote{margin-top:8px;font-size:0.719rem;color:var(--ink2);}
+  .lbox{position:fixed;inset:0;z-index:99;background:rgba(20,22,18,0.9);display:none;align-items:center;justify-content:center;padding:24px;}
+  .lbox.open{display:flex;}
+  .lbox img{max-width:100%;max-height:92vh;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,0.5);}
+  .lbox .cl{position:absolute;top:16px;right:16px;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.14);border:none;color:#fff;font-size:1.25rem;cursor:pointer;}
+  .thumb.ph{background:linear-gradient(145deg,#8A6A52,#6B5138);}
+  .thumb.ph span{width:26px;height:26px;}
+</style>
+</head>
+<body>
+<div id="maintPage" class="hidden">
+  <div class="maint-card">
+    <div data-l="maintTitle" class="m1">網站暫時關閉</div>
+    <div data-l="maintText" class="m2">我們正在休息整理中，歡迎稍後再來。如有任何問題，歡迎來信：<br><a href="mailto:fungienoki@gmail.com" style="color:var(--accent);">fungienoki@gmail.com</a></div>
+  </div>
+</div>
+
+<div id="sitePage">
+  <div class="wrap">
+    <div class="toolbar">
+      <a class="back-btn" href="index.html" data-l="back"><svg width="11" height="11" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 4l-8 8 8 8" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>全部產品</span></a>
+      <div style="display:flex;gap:8px;align-items:center;">
+        <div class="lang-pill">
+          <button data-lang="zh-Hant" onclick="setLang('zh-Hant')">繁</button>
+          <button data-lang="zh-Hans" onclick="setLang('zh-Hans')">简</button>
+          <button data-lang="es" onclick="setLang('es')">ES</button>
+        </div>
+        <div class="size-pill">
+          <button onclick="setSize(-1)" title="縮小字體">A−</button>
+          <button onclick="setSize(1)" title="放大字體">A+</button>
+        </div>
+        <button class="icon-btn" id="themeBtn" onclick="toggleTheme()" title="日夜模式">
+          <svg id="themeIcon" width="17" height="17" viewBox="0 0 24 24" aria-hidden="true"><path id="themePath" d="M21 12.8A8.5 8.5 0 1 1 11.2 3 6.6 6.6 0 0 0 21 12.8z" fill="currentColor"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="logo-row">
+      <img src="https://aka.doubaocdn.com/s/BOaOq0jgnV" alt="Fungi Enoki Logo">
+      <div class="lb"><span class="f">Fungi</span> <span class="e">Enoki</span></div>
+    </div>
+
+    <div class="hero">
+      <img id="heroImg" src="https://aka.doubaocdn.com/s/LnNQmCCBBj" alt="Gírgolas Azules">
+      <div class="dots"><i class="on"></i><i></i><i></i><i></i><i></i></div>
+    </div>
+
+    <div class="head">
+      <div class="zh" data-l="title">雜菇隨機包</div>
+      <div class="es">Surtido de Hongos</div>
+      <div class="meta" data-l="meta">每日隨機搭配 · 一盤吃滿多種菇</div>
+    </div>
+
+    <div class="sec">
+      <h2><span class="ic" style="background:linear-gradient(145deg,#8A6A52,#6B5138);"><svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d='M12 2L2 7l10 5 10-5-10-5z'/><path d='M2 17l10 5 10-5M2 12l10 5 10-5'/></svg></span><span data-l="s1t">每日隨機搭配</span></h2>
+      <p data-l="s1p">每一袋都是當天現採的新鮮菇類隨機組合，可能有杏鮑菇、鴻禧菇、金針菇、香菇、滑子菇、茶樹菇、平菇等。每天打開都像開一份小禮物，用來煮湯、快炒、做火鍋最方便。</p>
+    </div>
+    <div class="sec">
+      <h2><span class="ic" style="background:linear-gradient(145deg,#8A6A52,#6B5138);"><svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d='M12 2a10 10 0 100 20 10 0 000-20z'/><path d='M12 6v6l4 2'/></svg></span><span data-l="s2t">怎麼料理</span></h2>
+      <p data-l="s2p">建議先把菇類去除底部、沖淨瀝乾。可整盤下鍋快炒，或煮味噌湯、火鍋、義大利麵。不同菇類口感互補，風味層次更豐富。</p>
+    </div>
+    <div class="nutri">
+      <span class="keyline" data-l="nkey">關鍵亮點</span>
+      <div class="big" data-l="nbig">一次吃滿多種菇</div>
+      <div class="desc" data-l="ndesc">每袋隨機組合，膳食纖維、多糖、維生素B群一次補齊，熱量低、纖維豐富。</div>
+      <div class="row">
+        <span class="chip" data-l="n1">當天現採</span>
+        <span class="chip" data-l="n2">隨機組合</span>
+        <span class="chip" data-l="n3">高纖維</span>
+      </div>
+    </div>
+    </div>
+
+  <footer>
+    <div class="fbrand">FUNGI ENOKI</div>
+    <div class="fmail">Email：<a href="mailto:fungienoki@gmail.com">fungienoki@gmail.com</a></div>
+  </footer>
+</div>
+
+<script>
+// 维护模式
+fetch('maintenance.json',{cache:'no-store'}).then(function(r){return r.json();}).then(function(d){
+  if(d && d.on===true){document.getElementById('sitePage').classList.add('hidden');document.getElementById('maintPage').classList.remove('hidden');}
+}).catch(function(){});
+// 语言字典
+var T = {
+  back:{'zh-Hant':'← 全部產品','zh-Hans':'← 全部产品','es':'← Todos los productos'},
+  maintTitle:{'zh-Hant':'網站暫時關閉','zh-Hans':'网站暂时关闭','es':'Sitio temporalmente cerrado'},
+  maintText:{'zh-Hant':'我們正在休息整理中，歡迎稍後再來。','zh-Hans':'我们正在休息整理中，欢迎稍后再来。','es':'Estamos descansando y organizando. Vuelva pronto.'},
+  title:{'zh-Hant':'雜菇隨機包','zh-Hans':'杂菇随机包','es':'Surtido de Hongos'},
+  meta:{'zh-Hant':'每日隨機搭配 · 一盤吃滿多種菇','zh-Hans':'每日随机搭配 · 一盘吃满多种菇','es':'Mezcla diaria · un plato con varios hongos'},
+  s1t:{'zh-Hant':'每日隨機搭配','zh-Hans':'每日随机搭配','es':'Mezcla diaria aleatoria'},
+  s1p:{'zh-Hant':'每一袋都是當天現採的新鮮菇類隨機組合，可能有杏鮑菇、鴻禧菇、金針菇、香菇、滑子菇、茶樹菇、平菇等。每天打開都像開一份小禮物，用來煮湯、快炒、做火鍋最方便。','zh-Hans':'每一袋都是当天现采的新鲜菇类随机组合，可能有杏鲍菇、鸿禧菇、金针菇、香菇、滑子菇、茶树菇、平菇等。每天打开都像开一份小礼物，用来煮汤、快炒、做火锅最方便。','es':'Cada bolsa es una mezcla aleatoria de hongos frescos cosechados el mismo día: puede incluir ostra rey, shimeji, enoki, shiitake, nameko, pioppino, gírgola y más. Abrir cada día es como recibir un pequeño regalo; ideal para sopas, salteados y hot pot.'},
+  s2t:{'zh-Hant':'怎麼料理','zh-Hans':'怎么料理','es':'Cómo prepararlo'},
+  s2p:{'zh-Hant':'建議先把菇類去除底部、沖淨瀝乾。可整盤下鍋快炒，或煮味噌湯、火鍋、義大利麵。不同菇類口感互補，風味層次更豐富。','zh-Hans':'建议先把菇类去除底部、冲净沥干。可整盘下锅快炒，或煮味噌汤、火锅、意大利面。不同菇类口感互补，风味层次更丰富。','es':'Conviene cortar la base y lavar los hongos. Se pueden saltear todos juntos, o usar en sopa miso, hot pot o pasta. Las texturas de cada hongo se complementan y el plato queda más rico.'},
+  nkey:{'zh-Hant':'關鍵亮點','zh-Hans':'关键亮点','es':'DATO CLAVE'},
+  nbig:{'zh-Hant':'一次吃滿多種菇','zh-Hans':'一次吃满多种菇','es':'Varios hongos en un solo plato'},
+  ndesc:{'zh-Hant':'每袋隨機組合，膳食纖維、多糖、維生素B群一次補齊，熱量低、纖維豐富。','zh-Hans':'每袋随机组合，膳食纤维、多糖、维生素B群一次补齐，热量低、纤维丰富。','es':'Cada bolsa aporta fibra dietética, polisacáridos y complejo B; bajo en calorías.'},
+  n1:{'zh-Hant':'當天現採','zh-Hans':'当天现采','es':'Cosecha del día'},
+  n2:{'zh-Hant':'隨機組合','zh-Hans':'随机组合','es':'Mezcla aleatoria'},
+  n3:{'zh-Hant':'高纖維','zh-Hans':'高纤维','es':'Alto en fibra'},
+};
+var RECIPES = [];
+// 状态
+var LANG = localStorage.getItem('fe_lang') || 'zh-Hant';
+var THEME = localStorage.getItem('fe_theme') || 'day';
+var SIZE = parseInt(localStorage.getItem('fe_size')||'0',10);
+
+function openLb(img){
+  var lb=document.getElementById('lb'), bi=document.getElementById('lbImg');
+  if(!lb) return; bi.src=img.src; lb.classList.add('open');
+}
+function closeLb(){ var lb=document.getElementById('lb'); if(lb) lb.classList.remove('open'); }
+function renderYt(){
+  var g = document.getElementById('ytList'); if(!g) return; g.innerHTML='';
+  RECIPES.forEach(function(r,i){
+    var main = LANG==='es'?r.es:r.zh, sub = LANG==='es'?r.zh:r.es;
+    var d = document.createElement('div');
+    d.className='yt-card'; d.onclick=function(){playYt(i);};
+    d.innerHTML=(r.th
+      ?'<div class="thumb"><img src="'+r.th+'"><span>'
+      :'<div class="thumb ph"><span>')+'<svg width="10" height="10" viewBox="0 0 24 24"><polygon points="9,5 20,12 9,19" fill="#fff"/></svg></span></div><div style="flex:1;min-width:0;"><div class="t1">'+main+'</div><div class="t2">'+sub+'</div></div><span class="go">播放 →</span>';
+    g.appendChild(d);
+  });
+}
+function playYt(i){
+  var p=document.getElementById('ytPlayer'), f=document.getElementById('ytFrame');
+  if(!p||!f||!RECIPES[i]) return;
+  p.style.display='block'; f.src='https://www.youtube.com/embed/'+RECIPES[i].v+'?autoplay=1&rel=0';
+  p.scrollIntoView({behavior:'smooth',block:'center'});
+}
+function setLang(l){
+  LANG=l; localStorage.setItem('fe_lang',l);
+  document.querySelectorAll('.lang-pill button').forEach(function(b){b.classList.toggle('on',b.dataset.lang===l);});
+  Object.keys(T).forEach(function(k){
+    var el=document.querySelector('[data-l="'+k+'"]');
+    if(el) el.textContent=T[k][l];
+  });
+  renderYt();
+}
+function setSize(d){
+  SIZE=Math.max(-3,Math.min(3,SIZE+d)); localStorage.setItem('fe_size',SIZE);
+  document.documentElement.style.fontSize=(100+SIZE*10)+'%';
+}
+function toggleTheme(){
+  THEME=THEME==='day'?'night':'day'; localStorage.setItem('fe_theme',THEME);
+  document.documentElement.setAttribute('data-theme',THEME);
+  var tp=document.getElementById('themePath');
+  if(tp){ tp.setAttribute('d', THEME==='day' ? 'M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z' : 'M21 12.8A8.5 8.5 0 1 1 11.2 3 6.6 6.6 0 0 0 21 12.8z'); }
+}
+// hero 轮播
+var IMGS=["https://aka.doubaocdn.com/s/LnNQmCCBBj", "https://aka.doubaocdn.com/s/p00M4iBhFU", "https://aka.doubaocdn.com/s/UGlZOU1nfU", "https://aka.doubaocdn.com/s/7peKc9S4aE", "https://aka.doubaocdn.com/s/KDkzf44DmY"];
+var idx=0;
+setInterval(function(){
+  idx=(idx+1)%IMGS.length;
+  document.getElementById('heroImg').src=IMGS[idx];
+  var ds=document.querySelectorAll('.hero .dots i');
+  ds.forEach(function(dd,j){dd.classList.toggle('on',j===idx);});
+},3000);
+// 初始化
+(function(){
+  setLang(LANG);
+  setSize(0);
+  if(THEME==='night') toggleTheme();
+})();
+</script>
+<div class="lbox" id="lb" onclick="closeLb()"><button class="cl" aria-label="關閉">✕</button><img id="lbImg" alt=""></div>
+</body>
+</html>
